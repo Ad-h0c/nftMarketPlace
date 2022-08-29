@@ -1,0 +1,5 @@
+{
+  "solidity.compileUsingRemoteVersion": "v0.8.9+commit.e5eed63a",
+  "solidity.compileUsingLocalVersion": "/home/adhoc/blockDev/nftMarketPlace/soljson-v0.8.9+commit.e5eed63a.js",
+  "solidity.defaultCompiler": "remote"
+}
