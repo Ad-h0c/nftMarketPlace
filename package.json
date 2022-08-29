@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Ad-h0c/nftMarketPlace#readme",
   "dependencies": {
+    "dotenv": "^16.0.1",
     "hardhat": "^2.10.2"
   },
   "devDependencies": {
