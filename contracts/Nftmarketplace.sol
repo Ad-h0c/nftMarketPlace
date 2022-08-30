@@ -82,7 +82,7 @@ contract Nftmarketplace is ReentrancyGuard {
         isOwner(nftAddress, tokenId, msg.sender)
     {
         if (price <= 0) {
-            revert PriceMustbeAboveZero();
+            revert PriceMustBeAboveZero();
         }
         IERC721 token = IERC721(nftAddress);
         if (token.getApproved(tokenId) != address(this)) {
@@ -113,7 +113,7 @@ contract Nftmarketplace is ReentrancyGuard {
         }
         s_proceeds[listedItem.seller] += msg.value;
         delete (s_listings[nftAddress][tokenId]);
-        IERC721(nftAddress).safeTranferFrom(
+        IERC721(nftAddress).safeTransferFrom(
             listedItem.seller,
             msg.sender,
             tokenId
@@ -132,10 +132,10 @@ contract Nftmarketplace is ReentrancyGuard {
         nonReentrant
     {
         if (newPrice <= 0) {
-            revert PriceMustBeZero();
+            revert PriceMustBeAboveZero();
         }
         s_listings[nftAddress][tokenId].price = newPrice;
-        emit itemListed(nftAddress, tokenId, newPrice);
+        emit ItemListed(msg.sender, nftAddress, tokenId, newPrice);
     }
 
     function withdrawlProceeds() external {
@@ -151,7 +151,7 @@ contract Nftmarketplace is ReentrancyGuard {
     function getListings(address nftAddress, uint256 tokenId)
         external
         view
-        returns (Listing)
+        returns (Listing memory)
     {
         return s_listings[nftAddress][tokenId];
     }
